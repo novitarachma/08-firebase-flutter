@@ -18,3 +18,5 @@ A new Flutter project.
 #Halaman Tampilan Login
 
 ![halaman_login_google](https://user-images.githubusercontent.com/84777299/168255878-b7e53bc7-0aee-48ac-bf3d-11f957aaa0c5.jpg)
+
+![halaman_login](https://user-images.githubusercontent.com/84777299/168265013-6181c8e4-ae4d-4e4d-a69d-148653868d2e.jpg)
