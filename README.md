@@ -6,10 +6,10 @@ A new Flutter project.
 
 #Halaman Pertama
 
-![halaman_pertama](https://user-images.githubusercontent.com/84777299/168255831-e9d8c1b9-8494-4464-af7a-1ceb06690756.jpg)
+![halaman_pertama]
 
 
-![halaman_pertama_isiemail](https://user-images.githubusercontent.com/84777299/168255844-eb6c1e8f-5f31-4103-a690-6d2d43cb8cab.jpg)
+![halaman_pertama_isiemail]
 
 #Halaman Pilih Akun
 
