@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               margin: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
               child: ElevatedButton(
                   child: const Text(
-                    "Sign In",
+                    "Sign In With Email",
                     style: TextStyle(
                       color: Color.fromARGB(239, 12, 12, 12),
                       fontSize: 20,
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
               margin: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
               child: ElevatedButton(
                   child: const Text(
-                    "Sign Up",
+                    "Sign Up With Email",
                     style: TextStyle(
                       color: Color.fromARGB(239, 12, 12, 12),
                       fontSize: 20,
