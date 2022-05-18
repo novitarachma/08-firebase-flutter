@@ -52,6 +52,19 @@ class _LoginPageState extends State<LoginPage> {
                 controller: passwordController,
               ),
             ),
+           Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(
+                  left: 30, right: 30, top: 3, bottom: 15),
+              child: TextFormField(
+                decoration: InputDecoration(
+                  labelText: "Confirm Password",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0)),
+                ),
+                controller: passwordController,
+              ),
+            ),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(left: 30, right: 30, bottom: 10),
