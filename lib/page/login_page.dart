@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase/sign_in.dart';
-import 'package:flutter_firebase/first_screen.dart';
+import 'package:flutter_firebase/helper/authentication.dart';
+import 'package:flutter_firebase/helper/sign_in.dart';
+import 'package:flutter_firebase/screen/first_screen.dart';
+import 'package:flutter_firebase/screen/second_screen.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -14,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Rachma Novita Anggreani (2031710062)")
+        title: const Text("Rachma Novita Anggreani (2031710062)"),
       ),
       body: ListView(children: [
         Column(
@@ -55,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text(
                     "Sign In",
                     style: TextStyle(
-                      color: Color.fromARGB(239, 17, 17, 17),
+                      color: Color.fromARGB(239, 12, 12, 12),
                       fontSize: 20,
                     ),
                   ),
@@ -63,22 +67,26 @@ class _LoginPageState extends State<LoginPage> {
                     primary: Colors.blue,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(40),
                     ),
                   ),
                   onPressed: () async {
-                    var AuthSign;
-                    await AuthSign.signIn(
-                            emailController.text, passwordController.text)
+                    await signIn(emailController.text, passwordController.text)
                         .then((result) {
-                      if (result != null) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return FirstScreen();
-                            },
+                      if (result == null) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SecondScreen(
+                                      email: emailController.text,
+                                    )));
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            result,
+                            style: TextStyle(fontSize: 16),
                           ),
-                        );
+                        ));
                       }
                     });
                   }),
@@ -90,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: const Text(
                     "Sign Up",
                     style: TextStyle(
-                      color: Color.fromARGB(239, 17, 17, 17),
+                      color: Color.fromARGB(239, 12, 12, 12),
                       fontSize: 20,
                     ),
                   ),
@@ -98,22 +106,26 @@ class _LoginPageState extends State<LoginPage> {
                     primary: Colors.blue,
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5.0),
+                      borderRadius: BorderRadius.circular(40),
                     ),
                   ),
                   onPressed: () async {
-                    var AuthSign;
-                    await AuthSign.signUp(
-                            emailController.text, passwordController.text)
+                    signUp(emailController.text, passwordController.text)
                         .then((result) {
-                      if (result != null) {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return FirstScreen();
-                            },
+                      if (result == null) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SecondScreen(
+                                      email: emailController.text,
+                                    )));
+                      } else {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                            result,
+                            style: TextStyle(fontSize: 16),
                           ),
-                        );
+                        ));
                       }
                     });
                   }),
@@ -129,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(width: 20),
                 Text(
-                  'OR',
+                  'OR Sign In With',
                   style: TextStyle(color: Colors.black),
                 ),
                 SizedBox(width: 20),
@@ -145,26 +157,10 @@ class _LoginPageState extends State<LoginPage> {
       ]),
     );
   }
-    //  body: Container(
-    //    color: Colors.white,
-    //    child: Center(
-    //     child: Column(
-    //        mainAxisSize: MainAxisSize.max,
-    //        mainAxisAlignment: MainAxisAlignment.center,
-    //        children: <Widget>[
-    //          FlutterLogo(size: 150),
-    //          SizedBox(height: 50),
-    //          _signInButton(),
-    //        ],
-    //      ),
-    //    ),
-    //  ),
-  //  );
-  //}
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
+      splashColor: Colors.blue,
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
@@ -180,21 +176,21 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.grey),
+      borderSide: const BorderSide(color: Colors.blue),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //Image(image: AssetImage("assets/google_logo.png"), height: 35.0), 
+          children: const <Widget>[
+            //Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 10),
               child: Text(
-                'Sign in with Google',
+                'Google',
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.black,
+                  color: Colors.blue,
                 ),
               ),
             )
